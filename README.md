@@ -44,11 +44,51 @@ cmake -S . -B build
 cmake --build build
 ./build/bin/RTLog
 ```
+## Usage
 
-# 📄 MIT License
+RTLog++ uses a **Meyers' Singleton** pattern, ensuring a single instance
+per process.
 
-See License File
+### Basic initialization
 
-# 💻 garbanzo.com.ar
+```cpp
+#include "rtLog.hpp"
+
+    RTLog& log = RTLog::get();
+    log.runLogger();
+    
+    //Use mode:
+    log.infoLog("Application started");
+    log.debugLog("Debug information");
+    log.warningLog("Something looks odd");
+    log.errorLog("Operation failed");
+    log.fatalLog("Forcing shutdown");
+
+```
+
+### Log levels
+
+| Level     | Use case                                              |
+|-----------|-------------------------------------------------------|
+| `DEBUG`   | Diagnostic info for developers and sysadmins          |
+| `INFO`    | General events: start, stop, configuration            |
+| `WARNING` | Anything that could cause application oddities        |
+| `ERROR`   | Fatal to the operation, but not the application       |
+| `FATAL`   | Forces shutdown to prevent data loss                  |
+
+### One instance per process
+
+`RTLog::get()` always returns the same instance within a process.
+Multiple references across your codebase all point to the same object:
+
+```cpp
+RTLog& logA = RTLog::get(); // same instance
+RTLog& logB = RTLog::get(); // same instance
+```
+
+If RTLog++ is used across separate processes (e.g. a launcher that
+spawns child processes), each process maintains its own independent
+singleton — which is the expected behavior.
+
 
 🚧 Still in development 🚧
