@@ -1,5 +1,4 @@
 # RTLog++
----
 Runtime User-Space Log File
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
