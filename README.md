@@ -37,8 +37,6 @@ ProjectX/
 
 # SETUP GUIDE
 ## 🐧 Linux Setup
-### Install (required)
-
 ```bash
 git clone https://github.com/Amackata/RTLog.git
 cd rtLog
