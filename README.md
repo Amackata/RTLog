@@ -15,7 +15,7 @@ Runtime User-Space Log File
 * `platforms` → SDL3 + OS implementations
 * `third_party` → You can use with others external dependencies
 
-___
+
 ## 🧱 Architecture
 
 ```
@@ -34,7 +34,7 @@ ProjectX/
 │
 └── CMakeLists.txt
 ```
----
+
 # Setup Guide
 ## 🐧 Linux Setup
 
