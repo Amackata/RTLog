@@ -1,0 +1,92 @@
+##----------------------------------------------##
+## RTLog++ .gitignore for v0.0.1-alpha          ##
+##----------------------------------------------##
+
+################################
+# Build outputs (generic)
+################################
+build/
+**/build/
+bin/
+out/
+dist/
+
+################################
+# CMake (all platforms)
+################################
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+compile_commands.json
+_deps/
+cmake-build-*/
+
+################################
+# Android / Gradle (generic)
+################################
+.gradle/
+.cxx/
+.externalNativeBuild/
+local.properties
+
+*.apk
+*.aab
+*.ap_
+
+################################
+# Android (explicit platform scope)
+################################
+platform/android/.gradle/
+platform/android/.idea/
+platform/android/local.properties
+
+platform/android/**/build/
+platform/android/**/.cxx/
+platform/android/**/.externalNativeBuild/
+
+platform/android/**/CMakeFiles/
+platform/android/**/CMakeCache.txt
+platform/android/**/cmake_install.cmake
+
+################################
+# IDEs / Editors
+################################
+.idea/
+*.iml
+captures/
+.vscode/
+
+################################
+# Logs (runtime output)
+################################
+assets/log/
+*.log
+
+################################
+# OS junk
+################################
+.DS_Store
+Thumbs.db
+*~
+ehthumbs.db
+Desktop.ini
+
+###########################################
+# Personal / working folders (NOT versioned)
+###########################################
+
+
+###########################################
+# Windows / Installer outputs
+###########################################
+Output/
+*.exe
+*.msi
+
+###########################################
+# Linux artifacts
+###########################################
+*.out
+*.so
+
