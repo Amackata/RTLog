@@ -1,5 +1,5 @@
 # RTLog++
-Runtime User-Space Log File
+Runtime User-Space Log File - v0.0.1a
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
 ![CMake](https://img.shields.io/badge/build-CMake-green)
@@ -49,6 +49,6 @@ cmake --build build
 
 See License File
 
-# 👨‍💻 Garbanzo.com.ar
+# 💻 garbanzo.com.ar
 
-Still in development 🚧
+🚧 Still in development 🚧
