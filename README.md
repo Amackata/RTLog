@@ -42,7 +42,7 @@ git clone https://github.com/Amackata/RTLog.git
 cd rtLog
 cmake -S . -B build
 cmake --build build
-sudo cmake --install build
+./build/bin/RTLog
 ```
 
 # 📄 MIT License
