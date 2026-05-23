@@ -39,7 +39,7 @@ ProjectX/
 ## 🐧 Linux Setup
 ```bash
 git clone https://github.com/Amackata/RTLog.git
-cd rtLog
+cd RTLog
 cmake -S . -B build
 cmake --build build
 ./build/bin/RTLog
