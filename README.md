@@ -51,16 +51,16 @@ sudo cmake --install build
 
 ## 📊 Platform Strategy Progress Comparison
 
-|OS     | Technical Debt                |
-|---------|-------------------------------|
-| Linux   | Todo: System packages (`apt`) |
-| Windows | Todo:    ??                   |
-| Android | Precompiled `.a`              |
+|OS     | Technical Debt         |
+|---------|------------------------|
+| Linux   | Todo: Systemd(`apt`) ? |
+| Windows | Todo:    ??            |
+| Android | Precompiled `.a`       |
 
 ---
-# 📄 See License File
+# 📄 MIT License
 
-MIT
+See License File
 
 ---
 
