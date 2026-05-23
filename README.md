@@ -7,7 +7,7 @@ Runtime User-Space Log File
 ![Platforms](https://img.shields.io/badge/platforms-Linux%20%7C%20Windows%20%7C%20Android-lightgrey)
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
 
----
+___
 ![Logo](logo.png) \
 **RTLog++** is a modular runtime userspace log file, cross-platform C++ project with a strong separation of concerns:
 
@@ -15,7 +15,7 @@ Runtime User-Space Log File
 * `platforms` → SDL3 + OS implementations
 * `third_party` → You can use with others external dependencies
 
----
+___
 ## 🧱 Architecture
 
 ```
