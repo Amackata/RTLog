@@ -35,9 +35,8 @@ ProjectX/
 └── CMakeLists.txt
 ```
 
-# Setup Guide
+# SETUP GUIDE
 ## 🐧 Linux Setup
-
 ### Install (required)
 
 ```bash
