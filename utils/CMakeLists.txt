@@ -1,6 +1,6 @@
 add_library(utils STATIC
-        rtLogger.cpp
-        rtLogger.hpp
+        rtLog.cpp
+        rtLog.hpp
         ../examples/sdl3_demo.cpp
 )
 

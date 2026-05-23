@@ -7,9 +7,9 @@
 * Copyright (c) 2026 amackata *gmail.com
 *************************************************************/
 
-// TODO: [DEUDA] rtLogger() = default público coexiste con rtLogger(const std::string&) privado.
+// TODO: [DEUDA] RTLog() = default público coexiste con RTLog(const std::string&) privado.
 //       El singleton get() llama al default pero logFile nunca se abre → log() es no-op silencioso.
-//       Solución: eliminar rtLogger() = default, inicializar el singleton con filename fijo en get().
+//       Solución: eliminar RTLog() = default, inicializar el singleton con filename fijo en get().
 
 // TODO: [DEUDA] _CRT_SECURE_NO_WARNINGS definido en header → contamina todas las unidades
 //       que incluyan logger.hpp. Mover al CMakeLists de utils como add_compile_definitions()
@@ -35,13 +35,13 @@
 #include <iomanip> // This library defines std::put_time, otherway get error y no se puede definir
 
 
-class rtLogger
+class RTLog
 {
 public:
-    rtLogger() = default; // this -> Breaks the singleton
+    RTLog() = default; // this -> Breaks the singleton
 
     // Global Access (Meyers' Singleton)
-    static rtLogger& get();
+    static RTLog& get();
 
     // =========================
     // LEVEL TYPES
@@ -67,8 +67,8 @@ public:
     void fatalLog(std::string fatallogStr);
 
     // Prohibir copiar o mover (buena práctica)
-    rtLogger(const rtLogger&) = delete;
-    rtLogger& operator=(const rtLogger&) = delete;
+    RTLog(const RTLog&) = delete;
+    RTLog& operator=(const RTLog&) = delete;
 
 
 private:
@@ -82,6 +82,6 @@ private:
         return osLog.str();
     }
 
-    rtLogger(const std::string& filename);
-    ~rtLogger();
+    RTLog(const std::string& filename);
+    ~RTLog();
 };

@@ -3,11 +3,11 @@
 * Demonstrates RTLog++ integration with SDL3
 *************************************************************/
 #include <SDL3/SDL.h>
-#include "rtLogger.hpp"
+#include "rtLog.hpp"
 
 int main()
 {
-    rtLogger& log = rtLogger::get();
+    RTLog& log = RTLog::get();
     log.runLogger();
 
     if (!SDL_Init(SDL_INIT_VIDEO))
@@ -43,5 +43,6 @@ int main()
     SDL_DestroyWindow(window);
     SDL_Quit();
     log.infoLog("Shutdown complete");
+
     return 0;
 }
