@@ -47,12 +47,10 @@ cmake -S . -B build
 cmake --build build
 sudo cmake --install build
 ```
----
+
 # 📄 MIT License
 
 See License File
-
----
 
 # 👨‍💻 Garbanzo.com.ar
 
