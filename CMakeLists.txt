@@ -24,5 +24,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Project modules
 # ------------------------------------------------------------
 add_subdirectory(utils)
-#add_subdirectory(third_party)
-#add_subdirectory(platform)
+add_subdirectory(examples)
+
+# ------------------------------------------------------------
+# Root launcher
+# ------------------------------------------------------------
+add_executable(RTLog main.cpp)
+target_link_libraries(RTLog PRIVATE utils)
+target_compile_definitions(RTLog PRIVATE
+        RTLOG_BIN_DIR="${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+)
+add_dependencies(RTLog sdl3_demo)

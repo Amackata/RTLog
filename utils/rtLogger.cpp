@@ -26,10 +26,22 @@ rtLogger::~rtLogger()
     }
 }
 
+
 rtLogger& rtLogger::get() {
     static rtLogger instance;   // ← esto es clave: thread-safe desde C++11, se crea solo una vez
     return instance;
 }
+
+/*
+ * #include <filesystem>
+rtLogger& rtLogger::get()
+{
+    // Crear directorio log/ si no existe
+    std::filesystem::create_directories("log");
+    static rtLogger instance("log/rtLog.log"); // usa el constructor privado correcto
+    return instance;
+}
+ */
 
 void rtLogger::log(Level level, const std::string& message)
 {
@@ -66,9 +78,46 @@ void rtLogger::log(Level level, const std::string& message)
 
 void rtLogger::runLogger()
 {
+    try { rtLogger logger(RTLOG_LOG_PATH); }
+    catch (const std::exception& e) { std::cerr << "Error: " << e.what() << std::endl; }
+}
+
+void rtLogger::debugLog(std::string debuglogStr)
+{
+    rtLogger logger(RTLOG_LOG_PATH);
+    logger.log(rtLogger::DEBUG, debuglogStr);
+}
+
+void rtLogger::infoLog(std::string infologStr)
+{
+    rtLogger logger(RTLOG_LOG_PATH);
+    logger.log(rtLogger::INFO, infologStr);
+}
+
+void rtLogger::warningLog(std::string warninglogStr)
+{
+    rtLogger logger(RTLOG_LOG_PATH);
+    logger.log(rtLogger::WARNING, warninglogStr);
+}
+
+void rtLogger::errorLog(std::string errorlogStr)
+{
+    rtLogger logger(RTLOG_LOG_PATH);
+    logger.log(rtLogger::ERROR, errorlogStr);
+}
+
+void rtLogger::fatalLog(std::string fatallogStr)
+{
+    rtLogger logger(RTLOG_LOG_PATH);
+    logger.log(rtLogger::FATAL, fatallogStr);
+}
+
+/*
+void rtLogger::runLogger()
+{
     try
     {
-        rtLogger logger("hummus.log");
+        rtLogger logger("log/rtLog.log");
     }
     catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
@@ -77,31 +126,32 @@ void rtLogger::runLogger()
 
 void rtLogger::debugLog(std::string debuglogStr)
 {
-    rtLogger logger("hummus.log");
+    rtLogger logger("log/rtLog.log");
     logger.log(rtLogger::DEBUG, debuglogStr);
 }
 
 void rtLogger::infoLog(std::string infologStr)
 {
-    rtLogger logger("hummus.log");
+    rtLogger logger("log/rtLog.log");
     logger.log(rtLogger::INFO, infologStr);
 
 }
 
 void rtLogger::warningLog(std::string warninglogStr)
 {
-    rtLogger logger("hummus.log");
+    rtLogger logger("log/rtLog.log");
     logger.log(rtLogger::WARNING, warninglogStr);
 }
 
 void rtLogger::errorLog(std::string errorlogStr)
 {
-    rtLogger logger("hummus.log");
+    rtLogger logger("log/rtLog.log");
     logger.log(rtLogger::ERROR, errorlogStr);
 }
 
 void rtLogger::fatalLog(std::string fatallogStr)
 {
-    rtLogger logger("hummus.log");
+    rtLogger logger("log/rtLog.log");
     logger.log(rtLogger::FATAL, fatallogStr);
 }
+*/
