@@ -16,10 +16,10 @@ Runtime User-Space Log File - v0.0.1a
 * `third_party` → You can use with others external dependencies
 
 
-## 🧱 Architecture
+## 📦 Architecture
 
 ```
-ProjectX/
+MyProject
 │
 ├── log/...
 │
@@ -29,8 +29,8 @@ ProjectX/
 │
 ├── utils -> RTLog++ 
 │   ├── CMakelists.txt
-│   ├── rtLogger.hpp
-│   └── rtLogger.cpp
+│   ├── rtLog.hpp
+│   └── rtLog.cpp
 │
 └── CMakeLists.txt
 ```
@@ -55,15 +55,22 @@ per process.
 #include "rtLog.hpp"
 
     RTLog& log = RTLog::get();
-    log.runLogger();
-    
-    //Use mode:
-    log.infoLog("Application started");
-    log.debugLog("Debug information");
-    log.warningLog("Something looks odd");
-    log.errorLog("Operation failed");
-    log.fatalLog("Forcing shutdown");
+    log.runLogger();  
+```
+### Use Mode
+```cpp
+//Basic Mode:
+log.infoLog("Application started");
+log.debugLog("Debug information");
+log.warningLog("Something looks odd");
+log.errorLog("Operation failed");
+log.fatalLog("Forcing shutdown");
 
+// SDL3 Mode:
+log.debugLog(SDL_GetError());
+log.warningLog(SDL_GetError());
+log.errorLog(SDL_GetError());
+log.fatalLog(SDL_GetError());
 ```
 
 ### Log levels
