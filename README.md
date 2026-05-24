@@ -1,5 +1,5 @@
 # RTLog++
-Runtime User-Space Log File — v0.0.1a
+Runtime User-Space Log File — v0.0.2a
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
 ![CMake](https://img.shields.io/badge/build-CMake-green)
@@ -10,8 +10,9 @@ Runtime User-Space Log File — v0.0.1a
 
 ![Logo](logo.png) \
 \
-**RTLog++** is a modular lightweight **R**un**T**ime userspace **Log**ging system that integrates easily into any C++ project with minimal dependencies, cross-platform C++ designed for
-developers who need structured, timestamped runtime output.
+**RTLog++** is a lightweight, cross-platform C++ logging system for developers
+who need structured, timestamped runtime `output.log`. It integrates easily
+into any C++ project with minimal dependencies.
 
 ## 📦 Architecture
 
@@ -20,11 +21,11 @@ MyProject
 │
 ├── log/...
 │
-├── examples
+├── examples/
 │      ├── CMakelists.txt
 │      └── SDL3.cpp
 │
-├── utils -> RTLog++ 
+├── utils/   # RTLog++ 
 │   ├── CMakelists.txt
 │   ├── rtLog.hpp
 │   └── rtLog.cpp

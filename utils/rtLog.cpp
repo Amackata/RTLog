@@ -1,11 +1,14 @@
 /*************************************************************
-* RTLog++ v0.0.1a - Amackata's Codes
+* RTLog++ v0.0.2a - Amackata's Codes
 * https://github.com/amackata/RTLog
-*
 * Copyright (c) 2026 amackata - Garbanzo.com.ar
 * SPDX-License-Identifier: MIT
 *************************************************************/
 
+// Standard library dependencies
+#include <iomanip>   // std::setw, std::left
+#include <iostream>  // std::cerr
+#include <stdexcept> // std::runtime_error
 #include "rtLog.hpp"
 
 RTLog::RTLog(const std::string& filename)
@@ -38,7 +41,7 @@ RTLog& RTLog::get()
 {
     // Crear directorio log/ si no existe
     std::filesystem::create_directories("log");
-    static RTLog instance("log/rtLog.log"); // usa el constructor privado correcto
+    static RTLog instance("log/output.log"); // usa el constructor privado correcto
     return instance;
 }
  */

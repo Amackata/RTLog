@@ -1,10 +1,10 @@
 # ============================================================
 # RTLog++ - Root Build Script
-# Version 0.0.1a
 # ============================================================
+
 cmake_minimum_required(VERSION 3.22)
 project(RTLog++
-        VERSION 0.0.1 # Alpha
+        VERSION 0.0.2 # Alpha
         LANGUAGES CXX
 )
 

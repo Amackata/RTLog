@@ -1,7 +1,6 @@
 /*************************************************************
-* RTLog++ v0.0.1a - Amackata's Codes
+* RTLog++ v0.0.2a - Amackata's Codes
 * https://github.com/amackata/RTLog
-*
 * Copyright (c) 2026 amackata - Garbanzo.com.ar
 * SPDX-License-Identifier: MIT
 *************************************************************/
@@ -9,30 +8,18 @@
 // TODO: [DEUDA] RTLog() = default público coexiste con RTLog(const std::string&) privado.
 //       El singleton get() llama al default pero logFile nunca se abre → log() es no-op silencioso.
 //       Solución: eliminar RTLog() = default, inicializar el singleton con filename fijo en get().
-
-// TODO: [DEUDA] _CRT_SECURE_NO_WARNINGS definido en header → contamina todas las unidades
-//       que incluyan logger.hpp. Mover al CMakeLists de utils como add_compile_definitions()
-//       solo para Windows, o usar strftime() directamente.
-
 // TODO: [DEUDA] currentTimestamp() definido en header (.hpp) → se compila en cada .cpp
-//       que incluya el header. Mover implementación a logger.cpp.
-
+//       que incluya el header. Mover implementación a rtLog.cpp.
 // TODO: [MEJORA] Parámetros de debugLog/infoLog/warningLog/errorLog/fatalLog
 //       reciben std::string por valor. Cambiar a const std::string& para evitar copias.
+// TODO: [PORTABILIDAD] current_zone() requiere IANA timezone database.
+//       Disponible en GCC 13+ / Linux. Verificar soporte en otras plataformas.
 
 #pragma once
-
-#define _CRT_SECURE_NO_WARNINGS  // TODO: Warning on Windows: Try to use strftime instead 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
-
 #include <fstream>
-#include <iostream>
 #include <string>
-#include <ctime> // Only for show local time system in log
-
-//Trying to get work with this libraries
-#include <sstream> // Include this library because error: el agregado ‘std::ostringstream oss’ tiene un tipo incompleto y no se puede definir
-#include <iomanip> // This library defines std::put_time, otherway get error y no se puede definir
-
+#include <chrono>
+#include <format>
 
 class RTLog
 {
@@ -74,11 +61,15 @@ private:
     std::ofstream logFile;
     std::string currentTimestamp()
     {
-        auto now = std::time(nullptr);
-        auto tm = *std::localtime(&now);
-        std::ostringstream osLog; // osPanel = Output String Panel and osLog = Output String Log
-        osLog << std::put_time(&tm, "%d-%m-%Y %H:%M:%S"); // For Log propuse
-        return osLog.str();
+        auto now       = std::chrono::system_clock::now();
+        auto zone      = std::chrono::current_zone();
+        auto local     = zone->to_local(now);
+
+        /////////////////////////////////////////////////////////////////////////
+        // EN: ISO 8601 format → {:%Y-%m-%d %H:%M:%S} → 2026-05-24 14:30:00
+        // ES: Spanish format  → {:%d-%m-%Y %H:%M:%S} → 24-05-2026 14:30:00
+        /////////////////////////////////////////////////////////////////////////
+        return std::format("{:%Y-%m-%d %H:%M:%S}", local);
     }
 
     RTLog(const std::string& filename);

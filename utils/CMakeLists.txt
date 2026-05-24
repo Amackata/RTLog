@@ -1,3 +1,7 @@
+# ============================================================
+# RTLog++ - Utils
+# ============================================================
+
 add_library(utils STATIC
         rtLog.cpp
         rtLog.hpp
@@ -10,5 +14,5 @@ target_include_directories(utils
 )
 
 target_compile_definitions(utils PUBLIC
-        RTLOG_LOG_PATH="${CMAKE_SOURCE_DIR}/log/rtLog.log"
+        RTLOG_LOG_PATH="${CMAKE_SOURCE_DIR}/log/output.log"
 )
