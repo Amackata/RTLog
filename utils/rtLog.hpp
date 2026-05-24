@@ -1,10 +1,9 @@
 /*************************************************************
-* RTLog++ - Amackata's Codes version 0.0.1a
-* Garbanzo.com.ar/download
+* RTLog++ v0.0.1a - Amackata's Codes
+* https://github.com/amackata/RTLog
 *
-* All rights reserved.
-* Project license: MIT
-* Copyright (c) 2026 amackata *gmail.com
+* Copyright (c) 2026 amackata - Garbanzo.com.ar
+* SPDX-License-Identifier: MIT
 *************************************************************/
 
 // TODO: [DEUDA] RTLog() = default público coexiste con RTLog(const std::string&) privado.

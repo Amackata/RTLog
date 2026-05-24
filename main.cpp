@@ -1,6 +1,7 @@
 /*************************************************************
-* RTLog++ - Amackata's Codes version 0.0.1a
+* RTLog++ v0.0.1a - Amackata's Codes
 *************************************************************/
+
 #include <cstdlib>
 #include <filesystem>
 #include "rtLog.hpp"

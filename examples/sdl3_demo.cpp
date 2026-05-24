@@ -2,6 +2,7 @@
 * RTLog++ - Example: Minimal SDL3 Window
 * Demonstrates RTLog++ integration with SDL3
 *************************************************************/
+
 #include <SDL3/SDL.h>
 #include "rtLog.hpp"
 
