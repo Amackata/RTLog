@@ -19,16 +19,17 @@ into any C++ project with minimal dependencies.
 ```
 MyProject
 │
-├── log/...
+├── log/
+│    └── output.log
 │
 ├── examples/
 │      ├── CMakelists.txt
-│      └── SDL3.cpp
+│      └── sdl3_demo.cpp
 │
 ├── utils/   # RTLog++ 
-│   ├── CMakelists.txt
-│   ├── rtLog.hpp
-│   └── rtLog.cpp
+│     ├── CMakelists.txt
+│     ├── rtLog.hpp
+│     └── rtLog.cpp
 │
 └── CMakeLists.txt
 ```
@@ -41,7 +42,7 @@ git clone https://github.com/Amackata/RTLog.git
 cd RTLog
 cmake -S . -B build
 cmake --build build
-./build/bin/RTLog
+./build/bin/sdl3_demo
 ```
 ## Usage
 
