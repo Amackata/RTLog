@@ -1,11 +1,8 @@
 # ============================================================
 # RTLog++ - Examples
 # ============================================================
-
-# SDL3 examples — requiere SDL3
-find_package(SDL3 REQUIRED)
-
 add_executable(sdl3_demo sdl3_demo.cpp)
+
 target_link_libraries(sdl3_demo
         PRIVATE
         SDL3::SDL3
