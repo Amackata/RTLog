@@ -1,5 +1,5 @@
 # RTLog++
-Runtime User-Space Log File — v0.0.2a
+Runtime User-Space Log File — v0.0.3a
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
 ![CMake](https://img.shields.io/badge/build-CMake-green)
@@ -59,17 +59,17 @@ per process.
 ### Use Mode
 ```cpp
 //Basic Mode:
-log.infoLog("Application started");
-log.debugLog("Debug information");
-log.warningLog("Something looks odd");
-log.errorLog("Operation failed");
-log.fatalLog("Forcing shutdown");
+log.info("Application started");
+log.debug("Debug information");
+log.warning("Something looks odd");
+log.error("Operation failed");
+log.fatal("Forcing shutdown");
 
-// SDL3 Mode:
-log.debugLog(SDL_GetError());
-log.warningLog(SDL_GetError());
-log.errorLog(SDL_GetError());
-log.fatalLog(SDL_GetError());
+// Two-parameter Mode (message + detail): 
+log.debug("Renderer backend", SDL_GetRendererName(renderer));
+log.warning("Adaptive vsync not supported", SDL_GetError());
+log.error("Required asset not found", SDL_GetError());
+log.fatal("Renderer creation failed", SDL_GetError());
 ```
 
 ### Log levels

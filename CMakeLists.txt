@@ -4,7 +4,7 @@
 
 cmake_minimum_required(VERSION 3.22)
 project(RTLog++
-        VERSION 0.0.2 # Alpha
+        VERSION 0.0.3 # Alpha
         LANGUAGES CXX
 )
 

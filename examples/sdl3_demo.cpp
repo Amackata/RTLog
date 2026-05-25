@@ -15,10 +15,10 @@ int main()
     // -------------------------
     if (!SDL_Init(SDL_INIT_VIDEO))
     {
-        log.fatalLog(SDL_GetError());
+        log.fatal(SDL_GetError());
         return 1;
     }
-    log.infoLog("SDL3 initialized");
+    log.info("SDL3 initialized");
 
     // -------------------------
     // Window
@@ -26,11 +26,11 @@ int main()
     SDL_Window* window = SDL_CreateWindow("RTLog++ SDL3 Window", 800, 600, 0);
     if (!window)
     {
-        log.fatalLog("Window creation failed: " + std::string(SDL_GetError()));
+        log.fatal("Window creation failed", SDL_GetError());
         SDL_Quit();
         return 1;
     }
-    log.infoLog("Window created: 800x600");
+    log.info("Window created: 800x600");
 
     // -------------------------
     // Renderer
@@ -38,28 +38,27 @@ int main()
     SDL_Renderer* renderer = SDL_CreateRenderer(window, NULL);
     if (!renderer)
     {
-        log.fatalLog("Renderer creation failed: " + std::string(SDL_GetError()));
+        log.fatal("Renderer creation failed", SDL_GetError());
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
     }
-    log.infoLog("Renderer created");
+    log.info("Renderer created");
 
     // DEBUG: diagnostic info
-    log.debugLog("Renderer backend: " + std::string(SDL_GetRendererName(renderer)));
+    log.debug("Renderer backend", SDL_GetRendererName(renderer));
 
     // WARNING: adaptive vsync (-1) no soportado en todos los drivers
     if (!SDL_SetRenderVSync(renderer, -1))
-        log.warningLog("Adaptive vsync not supported, fallback disabled: "
-                       + std::string(SDL_GetError()));
+        log.warning("Adaptive vsync not supported, fallback disabled", SDL_GetError());
 
     // ERROR: asset requerido no encontrado
     SDL_Surface* bg = SDL_LoadBMP("assets/background.bmp");
     if (!bg)
-        log.errorLog("Required asset not found: " + std::string(SDL_GetError()));
+        log.error("Required asset not found", SDL_GetError());
 
     // FATAL: simulated critical condition - something got really, really wrong
-    log.fatalLog("Simulated: critical GPU memory failure - shutdown forced");
+    log.fatal("Simulated: critical GPU memory failure - shutdown forced");
 
     // -------------------------
     // Event loop
@@ -72,11 +71,10 @@ int main()
         {
             if (e.type == SDL_EVENT_QUIT)
             {
-                log.infoLog("Quit event received");
+                log.info("Quit event received");
                 running = false;
             }
         }
-
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
@@ -89,7 +87,7 @@ int main()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    log.infoLog("Shutdown complete");
+    log.info("Shutdown complete");
 
     return 0;
 }
