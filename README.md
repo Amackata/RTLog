@@ -1,5 +1,5 @@
 # RTLog++
-Runtime User-Space Log File — v0.0.3a
+Runtime User-Space Log File — v0.0.4a
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
 ![CMake](https://img.shields.io/badge/build-CMake-green)

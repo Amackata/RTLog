@@ -7,7 +7,7 @@
 
 int main()
 {
-    RTLog& log = RTLog::get();
+    RTLog& log = RTLog::get(); // Init RTLog++
     log.info("RTLog++ started");
 
 

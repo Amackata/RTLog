@@ -1,5 +1,5 @@
 /*************************************************************
-* RTLog++ v0.0.3a - Amackata's Codes
+* RTLog++ v0.0.4a - Amackata's Codes
 * https://github.com/amackata/RTLog
 * Copyright (c) 2026 amackata - Garbanzo.com.ar
 * SPDX-License-Identifier: MIT
