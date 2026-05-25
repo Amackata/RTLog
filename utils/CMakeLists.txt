@@ -1,11 +1,8 @@
 # ============================================================
 # RTLog++ - Utils
 # ============================================================
-
 add_library(utils STATIC
         rtLog.cpp
-        rtLog.hpp
-        ../examples/sdl3_demo.cpp
 )
 
 target_include_directories(utils
@@ -13,6 +10,7 @@ target_include_directories(utils
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_compile_definitions(utils PUBLIC
+target_compile_definitions(utils
+        PUBLIC
         RTLOG_LOG_PATH="${CMAKE_SOURCE_DIR}/log/output.log"
 )
