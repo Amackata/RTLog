@@ -96,5 +96,28 @@ If RTLog++ is used across separate processes (e.g. a launcher that
 spawns child processes), each process maintains its own independent
 singleton — which is the expected behavior.
 
+## 🗺️ Roadmap
+
+### ✅ v0.0.x Alpha — Current
+- [x] Singleton logger with file output
+- [x] Five log levels: DEBUG, INFO, WARNING, ERROR, FATAL
+- [x] ISO 8601 timestamps via `std::chrono` (C++20)
+- [x] Two-parameter API: `log.error("msg", detail)`
+- [x] SDL3 integration example
+
+### 🔲 v0.1.0 — Library Release
+- [ ] CMake `install()` rules
+- [ ] Installable via `sudo cmake --install build`
+- [ ] System-wide header: `#include <RTLog/rtLog.hpp>`
+- [ ] Fix singleton debt: `RTLog() = default` + `get()` refactor
+- [ ] Move `currentTimestamp()` from header to `.cpp`
+- [ ] `const std::string&` parameters across all methods
+
+### 🔲 v1.0.0 — Stable
+- [ ] `#include <RTLog>` convenience header
+- [ ] Windows support
+- [ ] Android support
+- [ ] Thread-safe file writing
+- [ ] Log rotation
 
 🚧 Still in development 🚧
