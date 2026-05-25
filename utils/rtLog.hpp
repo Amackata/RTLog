@@ -4,9 +4,6 @@
 * Copyright (c) 2026 amackata - Garbanzo.com.ar
 * SPDX-License-Identifier: MIT
 *************************************************************/
-// TODO: [DEUDA] RTLog() = default público coexiste con RTLog(const std::string&) privado.
-//       El singleton get() llama al default pero logFile nunca se abre → log() es no-op silencioso.
-//       Solución: eliminar RTLog() = default, inicializar el singleton con filename fijo en get().
 // TODO: [DEUDA] currentTimestamp() definido en header (.hpp) → se compila en cada .cpp
 //       que incluya el header. Mover implementación a rtLog.cpp.
 // TODO: [MEJORA] Parámetros de debug/info/warning/error/fatal reciben std::string por valor.
@@ -22,9 +19,10 @@
 class RTLog
 {
 public:
-    RTLog() = default; // this -> Breaks the singleton
+
     // Global Access (Meyers' Singleton)
     static RTLog& get();
+
     // =========================
     // LEVEL TYPES
     // =========================
@@ -37,14 +35,16 @@ public:
         ERROR,   // Fatal to the operation, but not the service or application
         FATAL    // Forces shutdown to prevent data loss
     };
-    void runLogger();
+    //void runLogger();
     void log(Level level, const std::string& message);
+
     // Single parameter
     void debug(const std::string& msg);
     void info(const std::string& msg);
     void warning(const std::string& msg);
     void error(const std::string& msg);
     void fatal(const std::string& msg);
+
     // Two parameters: message + detail (e.g. SDL_GetError())
     void debug(const std::string& msg, const std::string& detail);
     void info(const std::string& msg, const std::string& detail);
@@ -54,6 +54,7 @@ public:
     // Prohibir copiar o mover (buena práctica)
     RTLog(const RTLog&) = delete;
     RTLog& operator=(const RTLog&) = delete;
+
 private:
     std::ofstream logFile;
     std::string currentTimestamp()

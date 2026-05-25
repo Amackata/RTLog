@@ -29,7 +29,7 @@ RTLog::~RTLog()
 
 RTLog& RTLog::get()
 {
-    static RTLog instance; // ← thread-safe desde C++11, se crea solo una vez
+    static RTLog instance(RTLOG_LOG_PATH); // ← thread-safe desde C++11, se crea solo una vez
     return instance;
 }
 
@@ -62,74 +62,20 @@ void RTLog::log(Level level, const std::string& message)
             << message << std::endl;
 }
 
-void RTLog::runLogger()
-{
-    try { RTLog logger(RTLOG_LOG_PATH); }
-    catch (const std::exception& e) { std::cerr << "Error: " << e.what() << std::endl; }
-}
-
 // =========================
 // SINGLE PARAMETER
 // =========================
-void RTLog::debug(const std::string& msg)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::DEBUG, msg);
-}
-
-void RTLog::info(const std::string& msg)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::INFO, msg);
-}
-
-void RTLog::warning(const std::string& msg)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::WARNING, msg);
-}
-
-void RTLog::error(const std::string& msg)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::ERROR, msg);
-}
-
-void RTLog::fatal(const std::string& msg)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::FATAL, msg);
-}
+void RTLog::debug(const std::string& msg)   { get().log(DEBUG, msg); }
+void RTLog::info(const std::string& msg)    { get().log(INFO, msg); }
+void RTLog::warning(const std::string& msg) { get().log(WARNING, msg); }
+void RTLog::error(const std::string& msg)   { get().log(ERROR, msg); }
+void RTLog::fatal(const std::string& msg)   { get().log(FATAL, msg); }
 
 // =========================
 // TWO PARAMETERS
 // =========================
-void RTLog::debug(const std::string& msg, const std::string& detail)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::DEBUG, std::format("{}: {}", msg, detail));
-}
-
-void RTLog::info(const std::string& msg, const std::string& detail)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::INFO, std::format("{}: {}", msg, detail));
-}
-
-void RTLog::warning(const std::string& msg, const std::string& detail)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::WARNING, std::format("{}: {}", msg, detail));
-}
-
-void RTLog::error(const std::string& msg, const std::string& detail)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::ERROR, std::format("{}: {}", msg, detail));
-}
-
-void RTLog::fatal(const std::string& msg, const std::string& detail)
-{
-    RTLog logger(RTLOG_LOG_PATH);
-    logger.log(RTLog::FATAL, std::format("{}: {}", msg, detail));
-}
+void RTLog::debug(const std::string& msg, const std::string& detail)   { get().log(DEBUG, std::format("{}: {}", msg, detail)); }
+void RTLog::info(const std::string& msg, const std::string& detail)    { get().log(INFO, std::format("{}: {}", msg, detail)); }
+void RTLog::warning(const std::string& msg, const std::string& detail) { get().log(WARNING, std::format("{}: {}", msg, detail)); }
+void RTLog::error(const std::string& msg, const std::string& detail)   { get().log(ERROR, std::format("{}: {}", msg, detail)); }
+void RTLog::fatal(const std::string& msg, const std::string& detail)   { get().log(FATAL, std::format("{}: {}", msg, detail)); }

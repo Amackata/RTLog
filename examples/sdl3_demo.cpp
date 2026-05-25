@@ -8,7 +8,8 @@
 int main()
 {
     RTLog& log = RTLog::get();
-    log.runLogger();
+    log.info("RTLog++ started");
+
 
     // -------------------------
     // SDL3 Init
