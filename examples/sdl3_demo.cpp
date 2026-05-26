@@ -3,7 +3,7 @@
 * Demonstrates RTLog++ log levels with real SDL3 scenarios
 *************************************************************/
 #include <SDL3/SDL.h>
-#include "rtLog.hpp"
+#include "rtlog.hpp"
 
 int main()
 {

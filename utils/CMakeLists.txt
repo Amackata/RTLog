@@ -2,7 +2,7 @@
 # RTLog++ - Utils
 # ============================================================
 add_library(utils STATIC
-        rtLog.cpp
+        rtlog.cpp
 )
 
 target_include_directories(utils

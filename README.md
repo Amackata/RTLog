@@ -28,8 +28,8 @@ MyProject
 │
 ├── utils/   # RTLog++ 
 │     ├── CMakelists.txt
-│     ├── rtLog.hpp
-│     └── rtLog.cpp
+│     ├── rtlog.hpp
+│     └── rtlog.cpp
 │
 └── CMakeLists.txt
 ```
@@ -111,7 +111,7 @@ singleton — which is the expected behavior.
 - [ ] Installable via `sudo cmake --install build`
 - [ ] System-wide header: `#include <RTLog/rtLog.hpp>`
 - [x] Fix singleton debt: `RTLog() = default` + `get()` refactor
-- [ ] Move `currentTimestamp()` from header to `.cpp`
+- [x] Move `currentTimestamp()` from header to `.cpp`
 - [ ] `const std::string&` parameters across all methods
 
 ### 🔲 v1.0.0 — Stable

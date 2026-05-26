@@ -8,7 +8,9 @@
 #include <iomanip>   // std::setw, std::left
 #include <iostream>  // std::cerr
 #include <stdexcept> // std::runtime_error
-#include "rtLog.hpp"
+#include <chrono> // For currentTimestamp()
+#include <format> // For currentTimestamp()
+#include "rtlog.hpp"
 
 RTLog::RTLog(const std::string& filename)
 {
@@ -27,23 +29,23 @@ RTLog::~RTLog()
     }
 }
 
+std::string RTLog::currentTimestamp()
+{
+    auto now   = std::chrono::system_clock::now();
+    auto zone  = std::chrono::current_zone();
+    auto local = zone->to_local(now);
+    /////////////////////////////////////////////////////////////////////////
+    // EN: ISO 8601 format → {:%Y-%m-%d %H:%M:%S} → 2026-05-24 14:30:00
+    // ES: Spanish format  → {:%d-%m-%Y %H:%M:%S} → 24-05-2026 14:30:00
+    /////////////////////////////////////////////////////////////////////////
+    return std::format("{:%Y-%m-%d %H:%M:%S}", local);
+}
+
 RTLog& RTLog::get()
 {
     static RTLog instance(RTLOG_LOG_PATH); // ← thread-safe desde C++11, se crea solo una vez
     return instance;
 }
-
-/*
- * TODO
- * #include <filesystem>
-RTLog& RTLog::get()
-{
-    // Crear directorio log/ si no existe
-    std::filesystem::create_directories("log");
-    static RTLog instance("log/output.log"); // usa el constructor privado correcto
-    return instance;
-}
-*/
 
 void RTLog::log(Level level, const std::string& message)
 {
