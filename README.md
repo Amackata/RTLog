@@ -38,7 +38,7 @@ MyProject
 ## 🐧 Linux Setup
 
 ```bash
-git clone https://github.com/Amackata/RTLog.git
+git clone https://github.com/amackata/RTLog.git
 cd RTLog
 cmake -S . -B build
 cmake --build build
