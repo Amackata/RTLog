@@ -112,7 +112,7 @@ singleton — which is the expected behavior.
 - [ ] System-wide header: `#include <RTLog/rtLog.hpp>`
 - [x] Fix singleton debt: `RTLog() = default` + `get()` refactor
 - [x] Move `currentTimestamp()` from header to `.cpp`
-- [ ] `const std::string&` parameters across all methods
+- [x] `const std::string&` parameters across all methods
 
 ### 🔲 v1.0.0 — Stable
 - [ ] `#include <RTLog>` convenience header

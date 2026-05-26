@@ -5,8 +5,6 @@
 * SPDX-License-Identifier: MIT
 *************************************************************/
 
-// TODO: [MEJORA] Parámetros de debug/info/warning/error/fatal reciben std::string por valor.
-//       Cambiar a const std::string& para evitar copias.
 // TODO: [PORTABILIDAD] current_zone() requiere IANA timezone database.
 //       Disponible en GCC 13+ / Linux. Verificar soporte en otras plataformas.
 
@@ -56,7 +54,7 @@ public:
 
 private:
     std::ofstream logFile;
-    std::string currentTimestamp();
+    static std::string currentTimestamp();
     RTLog(const std::string& filename);
     ~RTLog();
 };
