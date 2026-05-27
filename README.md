@@ -110,6 +110,7 @@ singleton — which is the expected behavior.
 - [ ] CMake `install()` rules
 - [ ] Installable via `sudo cmake --install build`
 - [ ] System-wide header: `#include <RTLog/rtlog.hpp>`
+- [ ] Remove heap usage: replace std::string, std::ofstream and std::format before release
 - [x] Fix singleton debt: `RTLog() = default` + `get()` refactor
 - [x] Move `currentTimestamp()` from header to `.cpp`
 - [x] `const std::string&` parameters across all methods
