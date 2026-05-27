@@ -109,13 +109,14 @@ singleton — which is the expected behavior.
 ### 🔲 v0.1.0 — Library Release
 - [ ] CMake `install()` rules
 - [ ] Installable via `sudo cmake --install build`
-- [ ] System-wide header: `#include <RTLog/rtLog.hpp>`
+- [ ] System-wide header: `#include <RTLog/rtlog.hpp>`
 - [x] Fix singleton debt: `RTLog() = default` + `get()` refactor
 - [x] Move `currentTimestamp()` from header to `.cpp`
 - [x] `const std::string&` parameters across all methods
 
 ### 🔲 v1.0.0 — Stable
 - [ ] `#include <RTLog>` convenience header
+- [ ] Big Debt `CRITICAL - STACK ONLY`
 - [ ] Windows support
 - [ ] Android support
 - [ ] Thread-safe file writing

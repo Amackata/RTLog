@@ -5,6 +5,22 @@
 * SPDX-License-Identifier: MIT
 *************************************************************/
 
+// TODO: [CRITICAL - STACK ONLY] RTLog++ internally uses heap via std::string, std::ofstream
+//       and std::format. Not suitable for certified systems (IEC 62304, DO-178C) or environments
+//       where heap is prohibited or restricted (medical, aerospace, hard real-time).
+//       For stack-only replace: std::ofstream → write() + fixed static buffer,
+//       std::format → snprintf() over char[], std::string → std::string_view / const char*,
+//       exceptions → compile with -fno-exceptions and use error codes instead.
+//       In its current state RTLog++ is suitable only as a development and testing logger.
+//
+//       [CRÍTICO - STACK ONLY] RTLog++ usa heap internamente via std::string, std::ofstream
+//       y std::format. No apto para sistemas certificados (IEC 62304, DO-178C) ni entornos
+//       donde el heap está prohibido o restringido (médico, aeroespacial, tiempo real crítico).
+//       Para stack-only reemplazar: std::ofstream → write() + buffer estático fijo,
+//       std::format → snprintf() sobre char[], std::string → std::string_view / const char*,
+//       excepciones → compilar con -fno-exceptions y usar códigos de error.
+//       En su estado actual RTLog++ es apto únicamente como logger de desarrollo y testing.
+
 // TODO: [PORTABILIDAD] current_zone() requiere IANA timezone database.
 //       Disponible en GCC 13+ / Linux. Verificar soporte en otras plataformas.
 
