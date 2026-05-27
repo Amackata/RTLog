@@ -56,7 +56,7 @@ int main()
     // ERROR: asset requerido no encontrado
     SDL_Surface* bg = SDL_LoadBMP("assets/background.bmp");
     if (!bg)
-        log.error("Required asset not found", SDL_GetError());
+        log.error( SDL_GetError());
 
     // FATAL: simulated critical condition - something got really, really wrong
     log.fatal("Simulated: critical GPU memory failure - shutdown forced");

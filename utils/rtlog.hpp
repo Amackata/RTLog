@@ -71,6 +71,11 @@ public:
 private:
     std::ofstream logFile;
     static std::string currentTimestamp();
+
+    // TODO: C++ sin heap - perfectamente válido
+    //static char buffer[4096];
+    //static char timestamp[32];
+
     RTLog(const std::string& filename);
     ~RTLog();
 };

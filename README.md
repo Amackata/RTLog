@@ -1,4 +1,5 @@
-# RTLog++
+![Logo](logo.png) 
+
 Runtime User-Space Log File — v0.0.4a
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
@@ -6,9 +7,7 @@ Runtime User-Space Log File — v0.0.4a
 ![SDL3](https://img.shields.io/badge/SDL-3-orange)
 ![Platforms](https://img.shields.io/badge/platforms-Linux%20%7C%20Windows%20%7C%20Android-lightgrey)
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
-
-
-![Logo](logo.png) \
+\
 \
 **RTLog++** is a lightweight, cross-platform C++ logging system for developers
 who need structured, timestamped runtime `output.log`. It integrates easily
@@ -52,10 +51,9 @@ per process.
 ### Basic initialization
 
 ```cpp
-#include "rtLog.hpp"
+#include "rtlog.hpp"
 
-    RTLog& log = RTLog::get();
-    log.runLogger();  
+    RTLog& log = RTLog::get();  
 ```
 ### Use Mode
 ```cpp
@@ -118,7 +116,7 @@ singleton — which is the expected behavior.
 ### 🔲 v1.0.0 — Stable
 - [ ] `#include <RTLog>` convenience header
 - [ ] Big Debt `CRITICAL - STACK ONLY`
-- [ ] Windows support
+- [x] Windows support
 - [ ] Android support
 - [ ] Thread-safe file writing
 - [ ] Log rotation
