@@ -61,6 +61,14 @@ int main()
     // FATAL: simulated critical condition - something got really, really wrong
     log.fatal("Simulated: critical GPU memory failure - shutdown forced");
 
+    SDL_Texture* bgTex = nullptr;
+    SDL_Surface* bgReal = SDL_LoadBMP(ASSETS_PATH "bg_Liftoff.bmp");
+    if (bgReal)
+    {
+        bgTex = SDL_CreateTextureFromSurface(renderer, bgReal);
+        SDL_DestroySurface(bgReal);
+    }
+
     // -------------------------
     // Event loop
     // -------------------------
@@ -76,14 +84,17 @@ int main()
                 running = false;
             }
         }
-        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
+        if (bgTex)
+            SDL_RenderTexture(renderer, bgTex, NULL, NULL); // <- acá
         SDL_RenderPresent(renderer);
     }
 
     // -------------------------
     // Cleanup
     // -------------------------
+    if (bgTex) SDL_DestroyTexture(bgTex);
     if (bg) SDL_DestroySurface(bg); // spoiler: bg is always null in this demo
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

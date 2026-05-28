@@ -9,12 +9,5 @@ target_link_libraries(sdl3_demo
         utils
 )
 
-# ------------------------------------------------------------
-# generico_demo — solo RTLog++, sin dependencias externas
-# TODO: agregar generico_demo.cpp
-# ------------------------------------------------------------
-# add_executable(generico_demo generico_demo.cpp)
-# target_link_libraries(generico_demo
-#         PRIVATE
-#         utils
-# )
+target_compile_definitions(sdl3_demo PRIVATE
+        ASSETS_PATH="${CMAKE_CURRENT_SOURCE_DIR}/")
